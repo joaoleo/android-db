@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtnome_ferramenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[Nome da Ferramenta]"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#c38a4c"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/txtfabricante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[Fabricante]"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/txtreferencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[Referência]"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="15sp" />
+
+</LinearLayout>
