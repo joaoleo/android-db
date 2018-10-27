@@ -44,9 +44,9 @@ public class BuscaFerramentasActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         opcao_dados = b.getInt("opcao_dados");
 
-        spnopcoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spnopcoes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     layout_campo_busca.setVisibility(View.VISIBLE);
                 } else {
@@ -54,6 +54,11 @@ public class BuscaFerramentasActivity extends AppCompatActivity {
                     BuscarTudo();
                 }
                 opcao_busca = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
