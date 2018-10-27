@@ -1,4 +1,4 @@
-package net.leocadio.joao.sistemadeferramentas;
+package net.leocadio.joao.sistemadeferramentas.activities;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,9 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import net.leocadio.joao.sistemadeferramentas.models.Ferramenta;
+import net.leocadio.joao.sistemadeferramentas.adapters.FerramentasAdapter;
+import net.leocadio.joao.sistemadeferramentas.R;
+
 import java.util.ArrayList;
 
-public class BuscaFerramentasActivity extends AppCompatActivity {
+public class BuscaFerramentas extends AppCompatActivity {
 
     Spinner spnopcoes;
     LinearLayout layout_campo_busca;
@@ -79,17 +83,17 @@ public class BuscaFerramentasActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent telaDados = null;
                 switch (opcao_dados) {
-                    case 1: telaDados = new Intent(BuscaFerramentasActivity.this, AlterarDadosActivity.class);
+                    case 1: telaDados = new Intent(BuscaFerramentas.this, AlterarDados.class);
                         break;
-                    case 2: telaDados = new Intent(BuscaFerramentasActivity.this, ConsultarFerramentaActivity.class);
+                    case 2: telaDados = new Intent(BuscaFerramentas.this, ConsultarFerramenta.class);
                         break;
-                    case 3: telaDados = new Intent(BuscaFerramentasActivity.this, ExcluirFerramentaActivity.class);
+                    case 3: telaDados = new Intent(BuscaFerramentas.this, ExcluirFerramenta.class);
                         break;
                 }
                 c.moveToPosition(position);
                 telaDados.putExtra("numreg", c.getInt(0));
-                BuscaFerramentasActivity.this.startActivity(telaDados);
-                BuscaFerramentasActivity.this.finish();
+                startActivity(telaDados);
+                finish();
             }
         });
 
@@ -103,39 +107,38 @@ public class BuscaFerramentasActivity extends AppCompatActivity {
 
     public void BuscarTudo()
     {
-        c = db.query("ferramentas", new String []
-                {"numreg","nome_ferramenta","fabricante", "referencia"},null,null,null,null,null);
+        c = db.query("ferramentas", new String [] {"numreg", "nome_ferramenta", "fabricante", "referencia"},
+                null,null,null,null,null);
         c.moveToFirst();
-        ArrayList<DadosFerramenta> dadosFerramentaArray = new ArrayList<DadosFerramenta>();
-        for (int x = 0; x < c.getCount(); x++)
-        {
-            DadosFerramenta dadosFerramenta = new DadosFerramenta();
-            dadosFerramenta.setNome_ferramenta(c.getString(1));
-            dadosFerramenta.setFabricante(c.getString(2));
-            dadosFerramenta.setReferencia(c.getString(3));
-            dadosFerramentaArray.add(dadosFerramenta);
+        ArrayList<Ferramenta> ferramentaArray = new ArrayList<Ferramenta>();
+        for (int x = 0; x < c.getCount(); x++) {
+            Ferramenta ferramenta = new Ferramenta();
+            ferramenta.setNome_ferramenta(c.getString(1));
+            ferramenta.setFabricante(c.getString(2));
+            ferramenta.setReferencia(c.getString(3));
+            ferramentaArray.add(ferramenta);
             c.moveToNext();
         }
-        lstresultado_busca.setAdapter(new MyCustomRowBaseAdapter(this, dadosFerramentaArray));
+        lstresultado_busca.setAdapter(new FerramentasAdapter(this, ferramentaArray));
     }
 
     public void BuscaPorNome(String palavra_chave)
     {
         try {
-            c = db.query("ferramentas", new String[] { "numreg", "nome_ferramenta", "fabricante", "referencia" },
+            c = db.query("ferramentas", new String[] {"numreg", "nome_ferramenta", "fabricante", "referencia"},
                     "nome_ferramenta like '%" + palavra_chave + "%' ", null, null, null, null);
             c.moveToFirst();
-            ArrayList<DadosFerramenta> dadosFerramentaArray = new ArrayList<DadosFerramenta>();
+            ArrayList<Ferramenta> ferramentaArray = new ArrayList<Ferramenta>();
             if (c.getCount() > 0) {
                 for (int x = 0; x < c.getCount(); x++) {
-                    DadosFerramenta dadosFerramenta = new DadosFerramenta();
-                    dadosFerramenta.setNome_ferramenta(c.getString(1));
-                    dadosFerramenta.setFabricante(c.getString(2));
-                    dadosFerramenta.setReferencia(c.getString(3));
-                    dadosFerramentaArray.add(dadosFerramenta);
+                    Ferramenta ferramenta = new Ferramenta();
+                    ferramenta.setNome_ferramenta(c.getString(1));
+                    ferramenta.setFabricante(c.getString(2));
+                    ferramenta.setReferencia(c.getString(3));
+                    ferramentaArray.add(ferramenta);
                     c.moveToNext();
                 }
-                lstresultado_busca.setAdapter(new MyCustomRowBaseAdapter(this, dadosFerramentaArray));
+                lstresultado_busca.setAdapter(new FerramentasAdapter(this, ferramentaArray));
             } else {
                 MostraMensagem("Nenhum registro foi encontrado!");
             }
@@ -147,20 +150,20 @@ public class BuscaFerramentasActivity extends AppCompatActivity {
     public void BuscaPorFabricante(String palavra_chave)
     {
         try {
-            c = db.query("ferramentas", new String[] { "numreg", "nome_ferramenta", "fabricante", "referencia" },
+            c = db.query("ferramentas", new String[] {"numreg", "nome_ferramenta", "fabricante", "referencia"},
                     "fabricante like '%" + palavra_chave + "%' ", null, null, null, null);
             c.moveToFirst();
-            ArrayList<DadosFerramenta> dadosFerramentaArray = new ArrayList<DadosFerramenta>();
+            ArrayList<Ferramenta> ferramentaArray = new ArrayList<Ferramenta>();
             if (c.getCount() > 0) {
                 for (int x = 0; x < c.getCount(); x++) {
-                    DadosFerramenta dadosFerramenta = new DadosFerramenta();
-                    dadosFerramenta.setNome_ferramenta(c.getString(1));
-                    dadosFerramenta.setFabricante(c.getString(2));
-                    dadosFerramenta.setReferencia(c.getString(3));
-                    dadosFerramentaArray.add(dadosFerramenta);
+                    Ferramenta ferramenta = new Ferramenta();
+                    ferramenta.setNome_ferramenta(c.getString(1));
+                    ferramenta.setFabricante(c.getString(2));
+                    ferramenta.setReferencia(c.getString(3));
+                    ferramentaArray.add(ferramenta);
                     c.moveToNext();
                 }
-                lstresultado_busca.setAdapter(new MyCustomRowBaseAdapter(this, dadosFerramentaArray));
+                lstresultado_busca.setAdapter(new FerramentasAdapter(this, ferramentaArray));
             } else {
                 MostraMensagem("Nenhum registro foi encontrado!");
             }
@@ -172,20 +175,20 @@ public class BuscaFerramentasActivity extends AppCompatActivity {
     public void BuscaPorReferencia(String palavra_chave)
     {
         try {
-            c = db.query("ferramentas", new String[] { "numreg", "nome_ferramenta", "fabricante", "referencia" },
+            c = db.query("ferramentas", new String[] {"numreg", "nome_ferramenta", "fabricante", "referencia"},
                     "referencia = \"" + palavra_chave + "\"", null, null, null, null);
             c.moveToFirst();
-            ArrayList<DadosFerramenta> dadosFerramentaArray = new ArrayList<DadosFerramenta>();
+            ArrayList<Ferramenta> ferramentaArray = new ArrayList<Ferramenta>();
             if (c.getCount() > 0) {
                 for (int x = 0; x < c.getCount(); x++) {
-                    DadosFerramenta dadosFerramenta = new DadosFerramenta();
-                    dadosFerramenta.setNome_ferramenta(c.getString(1));
-                    dadosFerramenta.setFabricante(c.getString(2));
-                    dadosFerramenta.setReferencia(c.getString(3));
-                    dadosFerramentaArray.add(dadosFerramenta);
+                    Ferramenta ferramenta = new Ferramenta();
+                    ferramenta.setNome_ferramenta(c.getString(1));
+                    ferramenta.setFabricante(c.getString(2));
+                    ferramenta.setReferencia(c.getString(3));
+                    ferramentaArray.add(ferramenta);
                     c.moveToNext();
                 }
-                lstresultado_busca.setAdapter(new MyCustomRowBaseAdapter(this,dadosFerramentaArray));
+                lstresultado_busca.setAdapter(new FerramentasAdapter(this, ferramentaArray));
             } else {
                 MostraMensagem("Nenhum registro foi encontrado!");
             }
@@ -196,7 +199,7 @@ public class BuscaFerramentasActivity extends AppCompatActivity {
 
     public void MostraMensagem(String str)
     {
-        AlertDialog.Builder dialogo = new AlertDialog.Builder(BuscaFerramentasActivity.this);
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(BuscaFerramentas.this);
         dialogo.setTitle("Aviso");
         dialogo.setMessage(str);
         dialogo.setNeutralButton("OK", null);

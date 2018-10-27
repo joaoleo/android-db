@@ -1,4 +1,4 @@
-package net.leocadio.joao.sistemadeferramentas;
+package net.leocadio.joao.sistemadeferramentas.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MenuPrincipalActivity extends AppCompatActivity {
+import net.leocadio.joao.sistemadeferramentas.R;
+
+public class MenuPrincipal extends AppCompatActivity {
 
     SQLiteDatabase db;
 
@@ -31,35 +33,35 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         btcadastrar_ferramenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cadastrarFerramentaActivity = new Intent(MenuPrincipalActivity.this, CadastrarFerramentasActivity.class);
-                MenuPrincipalActivity.this.startActivity(cadastrarFerramentaActivity);
+                Intent cadastrarFerramenta = new Intent(MenuPrincipal.this, CadastrarFerramentas.class);
+                startActivity(cadastrarFerramenta);
             }
         });
 
         btalterar_dados.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent consultaFerramentaActivity = new Intent(MenuPrincipalActivity.this, BuscaFerramentasActivity.class);
-                consultaFerramentaActivity.putExtra("opcao_dados", 1);
-                MenuPrincipalActivity.this.startActivity(consultaFerramentaActivity);
+                Intent consultaFerramenta = new Intent(MenuPrincipal.this, BuscaFerramentas.class);
+                consultaFerramenta.putExtra("opcao_dados", 1);
+                startActivity(consultaFerramenta);
             }
         });
 
         btconsultar_ferramenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent consultaFerramentaActivity = new Intent(MenuPrincipalActivity.this, BuscaFerramentasActivity.class);
-                consultaFerramentaActivity.putExtra("opcao_dados", 2);
-                MenuPrincipalActivity.this.startActivity(consultaFerramentaActivity);
+                Intent consultaFerramenta = new Intent(MenuPrincipal.this, BuscaFerramentas.class);
+                consultaFerramenta.putExtra("opcao_dados", 2);
+                startActivity(consultaFerramenta);
             }
         });
 
         btexcluir_ferramenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent consultaFerramentaActivity = new Intent(MenuPrincipalActivity.this, BuscaFerramentasActivity.class);
-                consultaFerramentaActivity.putExtra("opcao_dados", 3);
-                MenuPrincipalActivity.this.startActivity(consultaFerramentaActivity);
+                Intent consultaFerramenta = new Intent(MenuPrincipal.this, BuscaFerramentas.class);
+                consultaFerramenta.putExtra("opcao_dados", 3);
+                startActivity(consultaFerramenta);
             }
         });
 
@@ -77,7 +79,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
     public void MostraMensagem(String str)
     {
-        AlertDialog.Builder dialogo = new AlertDialog.Builder(MenuPrincipalActivity.this);
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(MenuPrincipal.this);
         dialogo.setTitle("Aviso");
         dialogo.setMessage(str);
         dialogo.setNeutralButton("OK", null);

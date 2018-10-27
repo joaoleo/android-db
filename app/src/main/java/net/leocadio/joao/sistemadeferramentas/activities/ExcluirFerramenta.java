@@ -1,4 +1,4 @@
-package net.leocadio.joao.sistemadeferramentas;
+package net.leocadio.joao.sistemadeferramentas.activities;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,7 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ExcluirFerramentaActivity extends AppCompatActivity {
+import net.leocadio.joao.sistemadeferramentas.R;
+
+public class ExcluirFerramenta extends AppCompatActivity {
 
     TextView txtnome_ferramenta, txtfabricante, txtpreco, txtcor, txtreferencia;
     Button btfechar;
@@ -36,9 +38,8 @@ public class ExcluirFerramentaActivity extends AppCompatActivity {
         numreg = b.getInt("numreg");
         db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
 
-        c = db.query("ferramentas", new String[] {
-                        "nome_ferramenta", "fabricante", "preco","cor",
-                        "referencia" },"numreg = " + numreg, null, null, null,
+        c = db.query("ferramentas", new String[] {"nome_ferramenta", "fabricante", "preco", "cor", "referencia"},
+                "numreg = " + numreg, null, null, null,
                 null);
         c.moveToFirst();
         txtnome_ferramenta.setText(c.getString(0));
@@ -51,13 +52,13 @@ public class ExcluirFerramentaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 db.delete("ferramentas", "numreg=" + numreg, null);
-                AlertDialog.Builder dialogo = new AlertDialog.Builder(ExcluirFerramentaActivity.this);
+                AlertDialog.Builder dialogo = new AlertDialog.Builder(ExcluirFerramenta.this);
                 dialogo.setTitle("Aviso");
                 dialogo.setMessage("Dados excluidos com sucesso!");
                 dialogo.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ExcluirFerramentaActivity.this.finish();
+                        finish();
                     }
                 });
                 dialogo.show();
@@ -67,7 +68,7 @@ public class ExcluirFerramentaActivity extends AppCompatActivity {
         btfechar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExcluirFerramentaActivity.this.finish();
+                finish();
             }
         });
     }

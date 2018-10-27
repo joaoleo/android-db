@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuPrincipalActivity">
+        <activity android:name=".activities.MenuPrincipal">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastrarFerramentasActivity" />
-        <activity android:name=".AlterarDadosActivity" />
-        <activity android:name=".ConsultarFerramentaActivity" />
-        <activity android:name=".ExcluirFerramentaActivity" />
-        <activity android:name=".BuscaFerramentasActivity"></activity>
+        <activity android:name=".activities.CadastrarFerramentas" />
+        <activity android:name=".activities.AlterarDados" />
+        <activity android:name=".activities.ConsultarFerramenta" />
+        <activity android:name=".activities.ExcluirFerramenta" />
+        <activity android:name=".activities.BuscaFerramentas"></activity>
     </application>
 
 </manifest>

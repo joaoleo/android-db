@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/txtnome_ferramenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="[Nome da Ferramenta]"
+        android:text="@string/nome_da_ferramenta"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#c38a4c"
         android:textSize="17sp" />
@@ -17,7 +18,7 @@
         android:id="@+id/txtfabricante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="[Fabricante]"
+        android:text="@string/fabricante"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="15sp" />
 
@@ -25,7 +26,7 @@
         android:id="@+id/txtreferencia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="[Referência]"
+        android:text="@string/referencia"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="15sp" />
 

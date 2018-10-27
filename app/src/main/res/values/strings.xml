@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Sistema de Ferramentas</string>
+    <string name="alterar_dados">[ALTERAR DADOS]</string>
+    <string name="digite_as_info_abaixo">Digite as informações abaixo:</string>
+    <string name="nome_da_ferramenta">Nome da Ferramenta:</string>
+    <string name="fabricante">Fabricante:</string>
+    <string name="preco">Preço:</string>
+    <string name="cor">Cor:</string>
+    <string name="referencia">Referência:</string>
+    <string name="btn_fechar">Fechar</string>
+    <string name="pesquisar">[PESQUISAR]</string>
+    <string name="opcoes_de_busca">Opções de Busca:</string>
+    <string name="buscar">Buscar</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="cadastro">[CADASTRO]</string>
+    <string name="consultar_dados">[CONSULTAR DADOS]</string>
+    <string name="visualize_info_abaixo">Visualize as informações abaixo:</string>
+    <string name="fechar_consulta">Fechar Consulta</string>
+    <string name="excluir_dados">[EXCLUIR DADOS]</string>
+    <string name="excluir_ferramenta">Excluir Ferramenta</string>
+    <string name="titulo">Sistema Gerenciador de Ferramentas</string>
+    <string name="escolha_opcao_abaixo">Escolha uma das opções abaixo:</string>
+    <string name="btn_cadastrar_ferramenta">Cadastrar Ferramenta</string>
+    <string name="btn_alterar_dados">Alterar Dados</string>
+    <string name="btn_consultar_ferramenta">Consultar Ferramenta</string>
+    <string name="btn_excluir_ferramenta">Excluir Ferramenta</string>
 </resources>

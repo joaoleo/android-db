@@ -4,6 +4,6 @@
         <item name="tudo">Mostrar Tudo</item>
         <item name="busca_nome">Buscar por Nome</item>
         <item name="busca_fabricante">Buscar por Fabricante</item>
-        <item name="busca_referencia">Busca por referência</item>
+        <item name="busca_referencia">Busca por Referência</item>
     </string-array>
 </resources>

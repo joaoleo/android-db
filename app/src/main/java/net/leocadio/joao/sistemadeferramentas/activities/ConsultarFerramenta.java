@@ -1,4 +1,4 @@
-package net.leocadio.joao.sistemadeferramentas;
+package net.leocadio.joao.sistemadeferramentas.activities;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ConsultarFerramentaActivity extends AppCompatActivity {
+import net.leocadio.joao.sistemadeferramentas.R;
+
+public class ConsultarFerramenta extends AppCompatActivity {
 
     TextView txtnome_ferramenta, txtfabricante, txtpreco, txtcor, txtreferencia;
     Button btfechar;
@@ -31,9 +33,8 @@ public class ConsultarFerramentaActivity extends AppCompatActivity {
         btfechar = (Button) findViewById(R.id.btfechar);
         numreg = b.getInt("numreg");
         db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
-        c = db.query("ferramentas", new String[] {
-                        "nome_ferramenta", "fabricante", "preco","cor",
-                        "referencia" },"numreg = " + numreg, null, null, null,
+        c = db.query("ferramentas", new String[] {"nome_ferramenta", "fabricante", "preco", "cor", "referencia"},
+                "numreg = " + numreg, null, null, null,
                 null);
         c.moveToFirst();
         txtnome_ferramenta.setText(c.getString(0));
@@ -45,7 +46,7 @@ public class ConsultarFerramentaActivity extends AppCompatActivity {
         btfechar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ConsultarFerramentaActivity.this.finish();
+                ConsultarFerramenta.this.finish();
             }
         });
     }
