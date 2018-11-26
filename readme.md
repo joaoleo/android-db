@@ -1,4 +1,4 @@
-Android DB para versão 5.0
+Android DB para versão 5.0 API 21
 
 ![pagina 01](https://raw.githubusercontent.com/joaorik/android-db/master/imagem/01.png)
 ![pagina 02](https://raw.githubusercontent.com/joaorik/android-db/master/imagem/02.png)
